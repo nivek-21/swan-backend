@@ -2,7 +2,7 @@
   "database": {
     "host": "localhost",
     "user": "root",
-    "password": "",
-    "database": "express_app"
+    "password": "Jhonder.1527",
+    "database": "sistemausuarios"
   }
 }
