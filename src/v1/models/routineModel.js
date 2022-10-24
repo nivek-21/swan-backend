@@ -1,13 +1,21 @@
-const db = require('../../database/db')
+const db = require("../../database/db");
 
 const all = async () => {
-    const users = await db.query('select * from usuarios')
-    return users
-}
+  const users = await db.query("select * from routines");
+  return users;
+};
+
+const find = async (id) => {
+  const response = await db.query(
+    "SELECT * FROM routine WHERE id = ? LIMIT 1",
+    [id]
+  );
+  return response[0];
+};
 
 const store = async (routine) => {
-    const users = await db.query(`INSERT INTO usuarios (nombre, tipo, correo, contrasena, celular) VALUES ('${routine.nombre}', ${routine.tipo}, '${routine.correo}', '${routine.contrasena}', '${routine.celular}')`)
-    return true
-}
+  await db.query("INSERT INTO routine (user_id) VALUES (?)", [routine.user_id]);
+  return true;
+};
 
-module.exports = { all, store }
+module.exports = { all, store, find };

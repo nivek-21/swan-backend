@@ -8,16 +8,14 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
     const id = req.params.id
-    const users = await db.query(
-        'Select * from usuarios where id=' + id
-    )
-    res.json(users[0])
+    const routine = await routineModel.find(id)
+    res.json(routine)
 }
 
 const store = async(req, res) => {
     const body = req.body
     const result = await routineModel.store(body)
-    res.json(users)
+    res.json(result)
 }
 
 const update = (req, res) => {}
